@@ -1,10 +1,25 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <Sidebar />
   <router-view />
 </template>
+
+<script>
+import { defineComponent } from "vue";
+import "@fortawesome/fontawesome-free/css/all.css";
+import Sidebar from "@/components/sidebar/Sidebar.vue";
+import { sidebarWidth } from "@/components/sidebar/state";
+
+export default defineComponent({
+  components: { Sidebar },
+  setup() {
+    return { sidebarWidth };
+  },
+  data() {
+    return {};
+  },
+  methods: {},
+});
+</script>
 
 <style lang="scss">
 #app {

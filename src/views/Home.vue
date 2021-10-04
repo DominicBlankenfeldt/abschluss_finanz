@@ -1,17 +1,19 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div class="home row">
+    <btnCreate class="col" style="margin-top: 30px" />
+    <btnDelete class="col" style="margin-top: 30px" />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import btnCreate from "@/components/home/btnCreate.vue";
+import btnDelete from "@/components/home/btnDelete.vue"; // @ is an alias to /src
 
 @Options({
   components: {
-    HelloWorld,
+    btnCreate,
+    btnDelete,
   },
 })
 export default class Home extends Vue {}
