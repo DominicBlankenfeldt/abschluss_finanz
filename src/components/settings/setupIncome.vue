@@ -7,32 +7,58 @@
 
     <div class="income">
       <h1>Einkommen</h1>
-      <div>
-        <label><b>Einkommen:</b></label>
-        <input type="text" placeholder="Einkommen von ?" v-model="incomeWhat" />
-        <label><b>Wieviel:</b></label>
-        <input type="number" placeholder="€" v-model="incomeHowMuch" />
-      </div>
-      <button>Hinzufügen</button>
+      <form @submit.prevent="addIncome()" action="">
+        <div>
+          <label><b>Einkommen:</b></label>
+          <input
+            type="text"
+            placeholder="Einkommen von ?"
+            v-model="incomeWhat"
+            required
+          />
+          <label><b>Wieviel:</b></label>
+          <input
+            type="number"
+            placeholder="€"
+            v-model="incomeHowMuch"
+            required
+            min="1"
+          />
+        </div>
+        <button type="submit">Hinzufügen</button>
+      </form>
     </div>
     <div v-for="income in incomeList" v-bind:key="income">
       <label for="done" class="ms-3"><b>Was:</b>{{ income.incomeWhat }}</label>
       <label for="done" class="ms-3"
         ><b>Wieviel:</b> {{ income.incomeHowMuch }} €</label
       >
-      <button id="trashcan" @click="deleteCheck(check)">
+      <button id="trashcan" @click="deleteIncome(income)">
         <i class="far fa-trash-alt"></i>
       </button>
     </div>
     <div class="outcome">
       <h1>Ausgaben</h1>
-      <div>
-        <label><b>Ausgaben:</b></label>
-        <input type="text" placeholder="Ausgaben für ?" v-model="outcomeWhat" />
-        <label><b>Wieviel:</b></label>
-        <input type="number" placeholder="€" v-model="outcomeHowMuch" />
-      </div>
-      <button>Hinzufügen</button>
+      <form @submit.prevent="addOutcome()" action="">
+        <div>
+          <label><b>Ausgaben:</b></label>
+          <input
+            type="text"
+            placeholder="Ausgaben für ?"
+            v-model="outcomeWhat"
+            required
+          />
+          <label><b>Wieviel:</b></label>
+          <input
+            type="number"
+            placeholder="€"
+            v-model="outcomeHowMuch"
+            required
+            min="1"
+          />
+        </div>
+        <button type="submit">Hinzufügen</button>
+      </form>
     </div>
     <div v-for="outcome in outcomeList" v-bind:key="outcome">
       <label for="done" class="ms-3"
@@ -41,6 +67,15 @@
       <label for="done" class="ms-3"
         ><b>Wieviel:</b> {{ outcome.outcomeHowMuch }} €</label
       >
+      <button id="trashcan" @click="deleteOutcome(outcome)">
+        <i class="far fa-trash-alt"></i>
+      </button>
+    </div>
+    <div v-for="check in checks" v-bind:key="check">
+      <label for="done" class="ms-3"><b>Was:</b>{{ check.what }}</label>
+      <label for="done" class="ms-3"
+        ><b>Wieviel:</b> {{ check.howMuch }} €</label
+      >
       <button id="trashcan" @click="deleteCheck(check)">
         <i class="far fa-trash-alt"></i>
       </button>
@@ -48,36 +83,80 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { Options } from "vue-class-component";
+import {
+  loadIncome,
+  saveIncome,
+  loadOutcome,
+  saveOutcome,
+  loadChecks,
+  saveChecks,
+} from "../../API";
 
 export default defineComponent({
+  mounted() {
+    this.checks = loadChecks();
+    this.incomeList = loadIncome();
+    this.outcomeList = loadOutcome();
+  },
   data() {
     return {
       incomeWhat: "",
       incomeHowMuch: "",
       outcomeWhat: "",
       outcomeHowMuch: "",
-      incomeList: [
-        {
-          incomeWhat: "test",
-          incomeHowMuch: "",
-        },
-      ],
-      outcomeList: [
-        {
-          outcomeWhat: "test2",
-          outcomeHowMuch: "",
-        },
-      ],
+      incomeList: [],
+      outcomeList: [],
+      checks: [],
     };
   },
-  methods: {},
+  methods: {
+    addIncome() {
+      this.incomeList.push({
+        incomeWhat: this.incomeWhat,
+        incomeHowMuch: this.incomeHowMuch,
+      });
+      this.incomeWhat = "";
+      this.incomeHowMuch = "";
+
+      saveIncome(this.incomeList);
+
+      console.log("Einkommen erfolgreich erstellt");
+    },
+    deleteIncome(income) {
+      this.incomeList.splice(this.incomeList.indexOf(income), 1);
+      saveIncome(this.incomeList);
+      console.log("Einkommen erfolgreich gelöscht");
+    },
+    addOutcome() {
+      this.outcomeList.push({
+        outcomeWhat: this.outcomeWhat,
+        outcomeHowMuch: this.outcomeHowMuch,
+      });
+      this.outcomeHowMuch = "";
+      this.outcomeWhat = "";
+
+      saveOutcome(this.outcomeList);
+
+      console.log("Ausgaben erfolgreich erstellt");
+    },
+    deleteOutcome(outcome) {
+      this.outcomeList.splice(this.outcomeList.indexOf(outcome), 1);
+      saveOutcome(this.outcomeList);
+      console.log("Ausgaben erfolgreich gelöscht");
+    },
+    deleteCheck(check) {
+      this.checks.splice(this.checks.indexOf(check), 1);
+      console.log("Check erfolgreich gelöscht");
+      saveChecks(this.checks);
+    },
+  },
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h1 {
   font-weight: bold;
 }
