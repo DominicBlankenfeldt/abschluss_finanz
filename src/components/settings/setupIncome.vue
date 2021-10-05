@@ -93,6 +93,8 @@ import {
   saveOutcome,
   loadChecks,
   saveChecks,
+  saveSumChecks,
+  loadSumChecks,
 } from "../../API";
 
 export default defineComponent({
@@ -100,13 +102,15 @@ export default defineComponent({
     this.checks = loadChecks();
     this.incomeList = loadIncome();
     this.outcomeList = loadOutcome();
+    this.checksSum = loadSumChecks();
   },
   data() {
     return {
+      checksSum: 0,
       incomeWhat: "",
-      incomeHowMuch: "",
+      incomeHowMuch: Number,
       outcomeWhat: "",
-      outcomeHowMuch: "",
+      outcomeHowMuch: Number,
       incomeList: [],
       outcomeList: [],
       checks: [],
@@ -119,7 +123,7 @@ export default defineComponent({
         incomeHowMuch: this.incomeHowMuch,
       });
       this.incomeWhat = "";
-      this.incomeHowMuch = "";
+      this.incomeHowMuch = 0;
 
       saveIncome(this.incomeList);
 
@@ -135,7 +139,7 @@ export default defineComponent({
         outcomeWhat: this.outcomeWhat,
         outcomeHowMuch: this.outcomeHowMuch,
       });
-      this.outcomeHowMuch = "";
+      this.outcomeHowMuch = 0;
       this.outcomeWhat = "";
 
       saveOutcome(this.outcomeList);
@@ -147,10 +151,19 @@ export default defineComponent({
       saveOutcome(this.outcomeList);
       console.log("Ausgaben erfolgreich gelöscht");
     },
-    deleteCheck(check) {
+    deleteCheck(check: any) {
       this.checks.splice(this.checks.indexOf(check), 1);
       console.log("Check erfolgreich gelöscht");
+      this.calcSum();
       saveChecks(this.checks);
+    },
+    calcSum() {
+      this.checksSum = 0;
+      for (let sum of this.checks) {
+        this.checksSum += sum.howMuch;
+      }
+      console.log(this.checksSum);
+      saveSumChecks(this.checksSum);
     },
   },
 });

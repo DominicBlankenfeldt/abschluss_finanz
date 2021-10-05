@@ -2,6 +2,20 @@
 //   localStorage.setItem(storage, JSON.stringify(data));
 // }
 
+// Storage MoneyChecker Ausgabengesamt
+export function saveSumChecks(sumChecks: number) {
+  localStorage.setItem("sumChecksStorage", JSON.stringify(sumChecks));
+}
+export function loadSumChecks() {
+  return JSON.parse(localStorage.getItem("sumChecksStorage") || "0");
+}
+// Checks Interface
+export interface Checks {
+  what: string;
+  howMuch: number;
+  when: string;
+  payed: boolean;
+}
 // Checklist Localstorage
 export function saveChecks(checks: any[]) {
   localStorage.setItem("checkStorage", JSON.stringify(checks));

@@ -36,7 +36,7 @@
         </div>
         <button type="submit">Hinzufügen</button>
       </form>
-
+      <button @click="calcSum()">test</button>
       <button @click="savePayed()">Bezahlung Speichern</button>
     </div>
     <div class="">
@@ -69,25 +69,34 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { loadChecks, saveChecks } from "../../API";
+import {
+  loadChecks,
+  saveChecks,
+  Checks,
+  saveSumChecks,
+  loadSumChecks,
+} from "../../API";
 
 export default defineComponent({
   mounted() {
     this.checks = loadChecks();
+    this.checksSum = loadSumChecks();
   },
   data() {
     return {
+      checksSum: 0,
       payed: false,
       inputWhat: "",
       inputWhen: "",
-      inputHowMuch: "",
-      checks: [],
+      inputHowMuch: 0,
+      checks: [] as Checks[],
     };
   },
   methods: {
-    deleteCheck(check) {
+    deleteCheck(check: any) {
       this.checks.splice(this.checks.indexOf(check), 1);
       console.log("Check erfolgreich gelöscht");
+      this.calcSum();
       saveChecks(this.checks);
     },
     addCheck() {
@@ -98,15 +107,25 @@ export default defineComponent({
         payed: this.payed,
       });
       this.inputWhat = "";
-      this.inputHowMuch = "";
+      this.inputHowMuch = 0;
       this.inputWhen = "";
 
       saveChecks(this.checks);
+      this.calcSum();
 
       console.log("Check erfolgreich erstellt");
     },
     savePayed() {
+      this.calcSum();
       saveChecks(this.checks);
+    },
+    calcSum() {
+      this.checksSum = 0;
+      for (let sum of this.checks) {
+        this.checksSum += sum.howMuch;
+      }
+      console.log(this.checksSum);
+      saveSumChecks(this.checksSum);
     },
   },
 });
