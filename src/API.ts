@@ -9,6 +9,16 @@ export function saveSumChecks(sumChecks: number) {
 export function loadSumChecks() {
   return JSON.parse(localStorage.getItem("sumChecksStorage") || "0");
 }
+// incomeList Interface
+export interface incomeList {
+  incomeWhat: string;
+  incomeHowMuch: number;
+}
+// outcomeList Interface
+export interface outcomeList {
+  outcomeWhat: string;
+  outcomeHowMuch: number;
+}
 // Checks Interface
 export interface Checks {
   what: string;

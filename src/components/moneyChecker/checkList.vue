@@ -36,7 +36,6 @@
         </div>
         <button type="submit">Hinzufügen</button>
       </form>
-      <button @click="calcSum()">test</button>
       <button @click="savePayed()">Bezahlung Speichern</button>
     </div>
     <div class="">

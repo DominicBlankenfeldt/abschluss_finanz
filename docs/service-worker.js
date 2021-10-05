@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.ba873e005df8ab95370c0cac5c9d1956.js"
+  "/abschluss_finanz/precache-manifest.d2d1aa7a83886be80e02abfca0eb980a.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "abschluss_finanz"});

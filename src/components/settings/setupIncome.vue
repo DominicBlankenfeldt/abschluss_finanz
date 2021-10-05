@@ -2,7 +2,7 @@
   <div class="settings" style="margin-left: 58px">
     <div class="balance">
       <h1>deine Bilanz:</h1>
-      <h2>hier steht €</h2>
+      <h2>{{ balance }} €</h2>
     </div>
 
     <div class="income">
@@ -95,6 +95,9 @@ import {
   saveChecks,
   saveSumChecks,
   loadSumChecks,
+  incomeList,
+  outcomeList,
+  Checks,
 } from "../../API";
 
 export default defineComponent({
@@ -103,17 +106,23 @@ export default defineComponent({
     this.incomeList = loadIncome();
     this.outcomeList = loadOutcome();
     this.checksSum = loadSumChecks();
+    this.calcIncome();
+    this.calcOutcome();
+    this.calcBalance();
   },
   data() {
     return {
+      incomeSum: 0,
+      outcomeSum: 0,
+      balance: 0,
       checksSum: 0,
       incomeWhat: "",
-      incomeHowMuch: Number,
+      incomeHowMuch: 0,
       outcomeWhat: "",
-      outcomeHowMuch: Number,
-      incomeList: [],
-      outcomeList: [],
-      checks: [],
+      outcomeHowMuch: 0,
+      incomeList: [] as incomeList[],
+      outcomeList: [] as outcomeList[],
+      checks: [] as Checks[],
     };
   },
   methods: {
@@ -126,12 +135,16 @@ export default defineComponent({
       this.incomeHowMuch = 0;
 
       saveIncome(this.incomeList);
+      this.calcIncome();
+      this.calcBalance();
 
       console.log("Einkommen erfolgreich erstellt");
     },
-    deleteIncome(income) {
+    deleteIncome(income: any) {
       this.incomeList.splice(this.incomeList.indexOf(income), 1);
       saveIncome(this.incomeList);
+      this.calcIncome();
+      this.calcBalance();
       console.log("Einkommen erfolgreich gelöscht");
     },
     addOutcome() {
@@ -143,12 +156,16 @@ export default defineComponent({
       this.outcomeWhat = "";
 
       saveOutcome(this.outcomeList);
+      this.calcOutcome();
+      this.calcBalance();
 
       console.log("Ausgaben erfolgreich erstellt");
     },
-    deleteOutcome(outcome) {
+    deleteOutcome(outcome: any) {
       this.outcomeList.splice(this.outcomeList.indexOf(outcome), 1);
       saveOutcome(this.outcomeList);
+      this.calcOutcome();
+      this.calcBalance();
       console.log("Ausgaben erfolgreich gelöscht");
     },
     deleteCheck(check: any) {
@@ -164,6 +181,25 @@ export default defineComponent({
       }
       console.log(this.checksSum);
       saveSumChecks(this.checksSum);
+    },
+    calcIncome() {
+      this.incomeSum = 0;
+      for (let sum of this.incomeList) {
+        this.incomeSum += sum.incomeHowMuch;
+      }
+      console.log(this.incomeSum);
+    },
+    calcOutcome() {
+      this.outcomeSum = 0;
+      for (let sum of this.outcomeList) {
+        this.outcomeSum += sum.outcomeHowMuch;
+      }
+      console.log(this.outcomeSum);
+    },
+    calcBalance() {
+      console.log(this.incomeSum, this.outcomeSum, this.checksSum);
+      this.balance = this.incomeSum - this.outcomeSum - this.checksSum;
+      console.log("test");
     },
   },
 });
