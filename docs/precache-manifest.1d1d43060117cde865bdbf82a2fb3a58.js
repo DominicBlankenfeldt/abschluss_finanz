@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "55ebe56bb7c626480d31",
+    "revision": "8e5383bf0ed5092999b7",
     "url": "/abschluss_finanz/css/app.ef755950.css"
   },
   {
-    "revision": "479e8e6b06cb633f89b1",
+    "revision": "6b52b0461744713dc54a",
     "url": "/abschluss_finanz/css/chunk-vendors.a4f6d0b9.css"
   },
   {
@@ -68,7 +68,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/abschluss_finanz/img/fa-solid-900.37bc7099.svg"
   },
   {
-    "revision": "617d2d0200e3e24e24dca3be49cd0ce9",
+    "revision": "2b1d048c5381b4af9763e59ce551f0be",
     "url": "/abschluss_finanz/index.html"
   },
   {
@@ -76,12 +76,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/abschluss_finanz/js/about.d951e6aa.js"
   },
   {
-    "revision": "55ebe56bb7c626480d31",
-    "url": "/abschluss_finanz/js/app.99425af9.js"
+    "revision": "8e5383bf0ed5092999b7",
+    "url": "/abschluss_finanz/js/app.62f291d9.js"
   },
   {
-    "revision": "479e8e6b06cb633f89b1",
-    "url": "/abschluss_finanz/js/chunk-vendors.4619dd1c.js"
+    "revision": "6b52b0461744713dc54a",
+    "url": "/abschluss_finanz/js/chunk-vendors.da1f2833.js"
   },
   {
     "revision": "bce841dbed6438fe5bbe69b0e55bfd5b",
