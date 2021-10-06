@@ -29,11 +29,9 @@ button {
   font-weight: bold;
   padding: 32px 76px;
   text-decoration: none;
-  text-shadow: 4px 4px 12px #b95042;
 }
-button:hover {
+button:active {
   background-color: #b95042;
-  box-shadow: 7px 7px 5px 0px #aa493c;
   transform: scale(1.1);
 }
 </style>

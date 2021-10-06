@@ -2,6 +2,29 @@
 //   localStorage.setItem(storage, JSON.stringify(data));
 // }
 
+// Plans Interface
+export interface Plans {
+  planName: string;
+  planReason: string;
+  planValue: number;
+  planStart: string;
+  planEnd: string;
+  planIsValue: number;
+}
+// Plans LocalStorage
+export function savePlans(plans: any[]) {
+  localStorage.setItem("plansStorage", JSON.stringify(plans));
+}
+export function loadPlans() {
+  return JSON.parse(localStorage.getItem("plansStorage") || "[]");
+}
+// finishedPlans LocalStorage
+export function saveFinishedPlans(plans: any[]) {
+  localStorage.setItem("plansFinishedStorage", JSON.stringify(plans));
+}
+export function loadFinishedPlans() {
+  return JSON.parse(localStorage.getItem("plansFinishedStorage") || "[]");
+}
 // Storage MoneyChecker Ausgabengesamt
 export function saveSumChecks(sumChecks: number) {
   localStorage.setItem("sumChecksStorage", JSON.stringify(sumChecks));

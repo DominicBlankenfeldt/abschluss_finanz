@@ -29,7 +29,11 @@
     "src/components/home/btnCreate.vue",
     "src/components/home/btnDelete.vue",
     "src/components/settings/setupIncome.vue",
-    "src/views/MoneyChecker.vue"
+    "src/views/MoneyChecker.vue",
+    "src/components/open/quickPickOpen.vue",
+    "src/components/closed/quickPickClosed.vue",
+    "src/components/closed/quickPickOpen.vue",
+    "src/components/closed/quickPickClosed.vue"
   ],
   "exclude": ["node_modules"]
 }

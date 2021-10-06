@@ -1,20 +1,24 @@
 <template>
-  <div class="home row">
-    <btnCreate class="col" style="margin-top: 30px" />
-    <btnDelete class="col" style="margin-top: 30px" />
+  <div class="home">
+    <cad />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import cad from "@/components/home/createAndDelete.vue";
 import btnCreate from "@/components/home/btnCreate.vue";
 import btnDelete from "@/components/home/btnDelete.vue"; // @ is an alias to /src
 
 @Options({
   components: {
-    btnCreate,
-    btnDelete,
+    cad,
   },
 })
 export default class Home extends Vue {}
 </script>
+<style scoped>
+.home {
+  margin-left: 58px;
+}
+</style>
