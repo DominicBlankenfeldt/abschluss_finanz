@@ -18,7 +18,7 @@
               bg-success
             "
             role="progressbar"
-            style="width: 50%"
+            :style="{ width: JSON.stringify(plan.planProgress) + '%' }"
             aria-valuenow="0"
             aria-valuemin="0"
             aria-valuemax="100"

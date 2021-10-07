@@ -16,6 +16,7 @@
     "vue": "^3.0.0",
     "vue-carousel": "^0.18.0",
     "vue-class-component": "^8.0.0-0",
+    "vue-native-color-picker": "^1.2.0",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {

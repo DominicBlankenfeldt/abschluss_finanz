@@ -25,7 +25,7 @@
               bg-danger
             "
             role="progressbar"
-            style="width: 50%"
+            :style="{ width: JSON.stringify(finishedPlan.planProgress) + '%' }"
             aria-valuenow="0"
             aria-valuemin="0"
             aria-valuemax="100"

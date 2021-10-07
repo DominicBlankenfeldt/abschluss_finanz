@@ -10,6 +10,7 @@ export interface Plans {
   planStart: string;
   planEnd: string;
   planIsValue: number;
+  planProgress: number;
 }
 // Plans LocalStorage
 export function savePlans(plans: any[]) {

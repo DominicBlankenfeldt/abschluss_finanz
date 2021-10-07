@@ -18,7 +18,7 @@
               bg-success
             "
             role="progressbar"
-            style="width: 50%"
+            :style="{ width: JSON.stringify(plan.planProgress) + '%' }"
             aria-valuenow="0"
             aria-valuemin="0"
             aria-valuemax="100"
@@ -30,9 +30,13 @@
           <span class="col-12"><b>Gestartet: </b> {{ plan.planStart }}</span>
           <span class="col-12"><b>Geplant bis: </b> {{ plan.planEnd }}</span>
         </div>
-        <form @submit.prevent="">
+        <form @submit.prevent="saveMoney(plan)">
           <label for="">Geld:</label>
-          <input type="number" placeholder="€" />
+          <input
+            type="number"
+            placeholder="€"
+            v-model.number="saveMoneyValue"
+          />
           <button type="submit">sparen</button>
         </form>
       </div>
@@ -52,12 +56,14 @@ import {
 } from "../../API";
 
 export default defineComponent({
+  computed: {},
   mounted() {
     this.plans = loadPlans();
     this.finishedPlans = loadFinishedPlans();
   },
   data() {
     return {
+      saveMoneyValue: 0,
       finishedPlans: [] as Plans[],
       plans: [] as Plans[],
     };
@@ -71,14 +77,11 @@ export default defineComponent({
 
       console.log("Check erfolgreich beendet");
     },
-    // saveMoney() {
-
-    // },
-
-    // deleteAll() {
-    //   this.plans.length = 0;
-    //   savePlans(this.plans);
-    // },
+    saveMoney(plan: Plans) {
+      this.plans[this.plans.indexOf(plan)].planIsValue += this.saveMoneyValue;
+      plan.planProgress = (plan.planIsValue * 100) / plan.planValue;
+      savePlans(this.plans);
+    },
   },
 });
 </script>

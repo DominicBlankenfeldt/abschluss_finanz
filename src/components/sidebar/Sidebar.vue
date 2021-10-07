@@ -15,8 +15,8 @@
     <SidebarLink to="/Closed" icon="fas fa-clipboard"
       >Abgeschlossen</SidebarLink
     >
-    <SidebarLink to="/Settings" icon="far fa-edit">Einstellungen</SidebarLink>
-    <SidebarLink to="/MoneyChecker" icon="far fa-money-bill-alt"
+    <SidebarLink to="/Settings" icon="fas fa-calculator">Rechner</SidebarLink>
+    <SidebarLink to="/MoneyChecker" icon="fas fa-wallet"
       >MoneyChecker</SidebarLink
     >
     <span
@@ -36,7 +36,9 @@ import "@fortawesome/fontawesome-free/js/all.js";
 import SidebarLink from "./SidebarLink.vue";
 
 export default defineComponent({
-  props: {},
+  props: {
+    colorOfSidebar: String,
+  },
   components: { SidebarLink },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
@@ -46,7 +48,7 @@ export default defineComponent({
 
 <style>
 :root {
-  --sidebar-bg-color: #42b983;
+  --sidebar-bg-color: var(--colorOfSidebar);
   --sidebar-item-hover: #3ba174;
   --sidebar-item-active: #338a64;
   --sidebar-item-focus: #338a64;
