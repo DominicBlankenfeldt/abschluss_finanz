@@ -1,18 +1,25 @@
 <template>
-  <Sidebar :style="{ 'background-color': colorOfSidebar }" />
-  <router-view />
+  <div style="min-height: 100vh" @click="closeSidebar">
+    <Sidebar @click.stop :style="{ 'background-color': colorOfSidebar }" />
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import "@fortawesome/fontawesome-free/css/all.css";
 import Sidebar from "@/components/sidebar/Sidebar.vue";
-import { sidebarWidth } from "@/components/sidebar/state";
+import {
+  closeSidebar,
+  collapsed,
+  sidebarWidth,
+  toggleSidebar,
+} from "@/components/sidebar/state";
 
 export default defineComponent({
   components: { Sidebar },
   setup() {
-    return { sidebarWidth };
+    return { collapsed, sidebarWidth, toggleSidebar, closeSidebar };
   },
   data() {
     return {
@@ -22,6 +29,10 @@ export default defineComponent({
   methods: {
     changeColor(color: any) {
       console.log(color);
+    },
+    test() {
+      collapsed;
+      console.log("it works");
     },
   },
 });

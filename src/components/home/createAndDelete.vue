@@ -1,6 +1,6 @@
 <template>
   <div class="cad">
-    <div style="margin-top: 200px; margin-left: 10px; margin-right: 10px">
+    <div style="padding-top: 200px; margin-left: 10px; margin-right: 10px">
       <h1 v-if="planAnzahl == 1">
         <b
           >Du hast {{ planAnzahl }} Sparplan für den du sparst.<br />

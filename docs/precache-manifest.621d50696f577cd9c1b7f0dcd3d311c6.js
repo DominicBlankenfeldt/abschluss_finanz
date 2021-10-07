@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/abschluss_finanz/css/about.79e4bd14.css"
   },
   {
-    "revision": "b02ce170211f483977d3",
-    "url": "/abschluss_finanz/css/app.f5edebdb.css"
+    "revision": "e375f693da254e3b7d7c",
+    "url": "/abschluss_finanz/css/app.f194f834.css"
   },
   {
     "revision": "a3c9981109c4a88990a7",
@@ -72,7 +72,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/abschluss_finanz/img/fa-solid-900.37bc7099.svg"
   },
   {
-    "revision": "4c9c70426cf2b56c11e6509a9d534675",
+    "revision": "2c469cb21b31230de6463ab91fe6637d",
     "url": "/abschluss_finanz/index.html"
   },
   {
@@ -80,8 +80,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/abschluss_finanz/js/about.a9dc376c.js"
   },
   {
-    "revision": "b02ce170211f483977d3",
-    "url": "/abschluss_finanz/js/app.bf3f7fb7.js"
+    "revision": "e375f693da254e3b7d7c",
+    "url": "/abschluss_finanz/js/app.57675a3b.js"
   },
   {
     "revision": "a3c9981109c4a88990a7",
