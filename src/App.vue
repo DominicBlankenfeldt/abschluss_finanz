@@ -1,10 +1,10 @@
 <template>
   <div style="min-height: 100vh" @click="closeSidebar">
     <Sidebar @click.stop :style="{ 'background-color': colorOfSidebar }" />
-    <router-view />
+    <router-view :style="checkToggeling" />
   </div>
 </template>
-
+// filter: opacity(75%)
 <script lang="ts">
 import { defineComponent } from "vue";
 import "@fortawesome/fontawesome-free/css/all.css";
@@ -17,6 +17,13 @@ import {
 } from "@/components/sidebar/state";
 
 export default defineComponent({
+  computed: {
+    checkToggeling() {
+      if (collapsed.value == false)
+        return { filter: "opacity(75%)", transition: "0.3s ease" };
+      else return {};
+    },
+  },
   components: { Sidebar },
   setup() {
     return { collapsed, sidebarWidth, toggleSidebar, closeSidebar };

@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "47d72e5f77381b1b4912",
-    "url": "/abschluss_finanz/css/about.79e4bd14.css"
+    "revision": "a541679abd3b8329d71e",
+    "url": "/abschluss_finanz/css/about.e06cbd94.css"
   },
   {
-    "revision": "e375f693da254e3b7d7c",
-    "url": "/abschluss_finanz/css/app.f194f834.css"
+    "revision": "8d9720bac795ef5aa969",
+    "url": "/abschluss_finanz/css/app.0b592914.css"
   },
   {
     "revision": "a3c9981109c4a88990a7",
@@ -72,16 +72,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/abschluss_finanz/img/fa-solid-900.37bc7099.svg"
   },
   {
-    "revision": "2c469cb21b31230de6463ab91fe6637d",
+    "revision": "079e39dd4bdfdab3d11e6d20dad33552",
     "url": "/abschluss_finanz/index.html"
   },
   {
-    "revision": "47d72e5f77381b1b4912",
-    "url": "/abschluss_finanz/js/about.a9dc376c.js"
+    "revision": "a541679abd3b8329d71e",
+    "url": "/abschluss_finanz/js/about.99267695.js"
   },
   {
-    "revision": "e375f693da254e3b7d7c",
-    "url": "/abschluss_finanz/js/app.57675a3b.js"
+    "revision": "8d9720bac795ef5aa969",
+    "url": "/abschluss_finanz/js/app.2f7bcc9d.js"
   },
   {
     "revision": "a3c9981109c4a88990a7",

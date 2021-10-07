@@ -1,5 +1,5 @@
 <template>
-  <div class="quickPickOpen">
+  <div class="quickPickOpen" style="padding: 15px">
     <div id="planviewer" v-for="plan in plans" v-bind:key="plan">
       <div>
         <h1>
@@ -95,7 +95,6 @@ export default defineComponent({
   background-color: #42b9834d;
   border: solid 3px #2b2b2b;
   border-radius: 5px;
-  margin: 15px;
 }
 
 button {
